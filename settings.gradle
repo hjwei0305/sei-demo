@@ -1,0 +1,4 @@
+rootProject.name = 'sei-demo'
+include 'sei-demo-api'
+include 'sei-demo-service'
+
