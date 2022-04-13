@@ -1,6 +1,9 @@
 package com.changhong.sei.demo.controller;
 
 import com.changhong.sei.core.controller.BaseEntityController;
+import com.changhong.sei.core.dto.ResultData;
+import com.changhong.sei.core.dto.serach.PageResult;
+import com.changhong.sei.core.dto.serach.Search;
 import com.changhong.sei.core.service.BaseEntityService;
 import com.changhong.sei.demo.api.FlowFormApi;
 import com.changhong.sei.demo.dto.FlowFormDto;
@@ -70,4 +73,8 @@ public class FlowFormController extends BaseFlowController<FlowForm, FlowFormDto
         return flowForm.getCode();
     }
 
+    @Override
+    public ResultData<PageResult<FlowFormDto>> findByPage(Search search) {
+        return convertToDtoPageResult(service.findByPage(search));
+    }
 }

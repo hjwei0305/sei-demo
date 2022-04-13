@@ -1,5 +1,7 @@
 package com.changhong.sei.demo.entity;
 
+import com.changhong.sei.core.dto.annotation.DataHistory;
+import com.changhong.sei.core.dto.annotation.EnableDataHistory;
 import com.changhong.sei.core.entity.BaseAuditableEntity;
 import com.changhong.sei.core.entity.ITenant;
 import org.hibernate.annotations.DynamicInsert;
@@ -20,6 +22,7 @@ import java.io.Serializable;
 @Table(name = "AuthData")
 @DynamicInsert
 @DynamicUpdate
+@EnableDataHistory(name = "演示数据")
 public class Authdata extends BaseAuditableEntity implements Serializable, ITenant {
     private static final long serialVersionUID = -26707892180019370L;
     /**
@@ -31,6 +34,7 @@ public class Authdata extends BaseAuditableEntity implements Serializable, ITena
      * 名称
      */
     @Column(name = "name")
+    @DataHistory(name = "名称")
     private String name;
     /**
      * 租户代码

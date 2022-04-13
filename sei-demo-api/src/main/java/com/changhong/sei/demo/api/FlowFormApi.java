@@ -1,6 +1,7 @@
 package com.changhong.sei.demo.api;
 
 import com.changhong.sei.core.api.BaseEntityApi;
+import com.changhong.sei.core.api.FindByPageApi;
 import com.changhong.sei.demo.dto.FlowFormDto;
 import org.springframework.cloud.openfeign.FeignClient;
 
@@ -15,6 +16,6 @@ import javax.validation.Valid;
  */
 @Valid
 @FeignClient(name = "sei-demo", path = FlowFormApi.PATH)
-public interface FlowFormApi extends BaseEntityApi<FlowFormDto> {
+public interface FlowFormApi extends BaseEntityApi<FlowFormDto>, FindByPageApi<FlowFormDto> {
     String PATH = "flowForm";
 }
