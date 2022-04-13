@@ -53,11 +53,6 @@ public class FlowForm extends BaseFlowEntity implements Serializable {
     @Column(name = "organization_code")
     private String organizationCode;
     /**
-     * 流程状态
-     */
-    @Column(name = "flow_status")
-    private String flowStatus;
-    /**
      * 租户代码
      */
     @Column(name = "tenant_code")
