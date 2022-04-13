@@ -50,7 +50,7 @@ public class FlowFormController extends BaseFlowController<FlowForm, FlowFormDto
     public Map<String, Object> getPropertyValue(FlowForm flowForm) {
         Map<String, Object> map = new HashMap<>(1);
         map.put("code", flowForm.getCode());
-        return super.getPropertyValue(flowForm);
+        return map;
     }
 
     @Override
