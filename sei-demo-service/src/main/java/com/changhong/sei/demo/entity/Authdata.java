@@ -41,8 +41,8 @@ public class Authdata extends BaseAuditableEntity implements Serializable, ITena
     /**
      * 名称
      */
-    @Column(name = "forzen")
-    private Boolean forzen;
+    @Column(name = "frozen")
+    private Boolean frozen;
 
     /**
      * 租户代码
@@ -77,11 +77,11 @@ public class Authdata extends BaseAuditableEntity implements Serializable, ITena
 
     @Override
     public Boolean getFrozen() {
-        return getFrozen();
+        return frozen;
     }
 
     @Override
     public void setFrozen(Boolean frozen) {
-        this.forzen = frozen;
+        this.frozen = frozen;
     }
 }
