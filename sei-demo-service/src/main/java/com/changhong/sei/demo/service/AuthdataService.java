@@ -2,12 +2,15 @@ package com.changhong.sei.demo.service;
 
 import com.changhong.sei.basic.sdk.UserAuthorizeManager;
 import com.changhong.sei.core.dao.BaseEntityDao;
+import com.changhong.sei.core.dto.ResultData;
 import com.changhong.sei.core.dto.serach.PageResult;
 import com.changhong.sei.core.dto.serach.Search;
 import com.changhong.sei.core.service.BaseEntityService;
 import com.changhong.sei.core.service.DataAuthEntityService;
 import com.changhong.sei.core.service.bo.OperateResultWithData;
+import com.changhong.sei.demo.api.AuthdataApi;
 import com.changhong.sei.demo.dao.AuthdataDao;
+import com.changhong.sei.demo.dto.AuthdataDto;
 import com.changhong.sei.demo.entity.Authdata;
 import com.changhong.sei.serial.sdk.SerialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,9 @@ public class AuthdataService extends BaseEntityService<Authdata> implements Data
     @Autowired(required = false)
     private SerialService serialService;
 
+    @Autowired
+    private AuthdataApi authdataApi;
+
     @Override
     protected BaseEntityDao<Authdata> getDao() {
         return dao;
@@ -47,6 +53,8 @@ public class AuthdataService extends BaseEntityService<Authdata> implements Data
     }
 
     public List<Authdata> findByCode(String code) {
+        ResultData<List<AuthdataDto>> a = authdataApi.getUserAuthorizedEntities(null);
+        ResultData<List<AuthdataDto>> b = authdataApi.getUserAuthorizedEntities("test");
         return dao.findListByCode(code);
     }
 
