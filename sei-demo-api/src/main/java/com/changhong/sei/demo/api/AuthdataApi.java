@@ -1,6 +1,8 @@
 package com.changhong.sei.demo.api;
 
 import com.changhong.sei.core.api.BaseEntityApi;
+import com.changhong.sei.core.api.DataAuthEntityApi;
+import com.changhong.sei.core.api.DataAuthEntityIncludeFrozenApi;
 import com.changhong.sei.core.api.FindByPageApi;
 import com.changhong.sei.demo.dto.AuthdataDto;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
  */
 @Valid
 @FeignClient(name = "sei-demo", path = AuthdataApi.PATH)
-public interface AuthdataApi extends BaseEntityApi<AuthdataDto>, FindByPageApi<AuthdataDto> {
+public interface AuthdataApi extends BaseEntityApi<AuthdataDto>, FindByPageApi<AuthdataDto>, DataAuthEntityApi<AuthdataDto>,
+        DataAuthEntityIncludeFrozenApi<AuthdataDto> {
     String PATH = "authdata";
 }

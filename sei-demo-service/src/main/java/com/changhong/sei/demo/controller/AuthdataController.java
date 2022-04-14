@@ -2,6 +2,7 @@ package com.changhong.sei.demo.controller;
 
 import com.changhong.sei.core.controller.BaseEntityController;
 import com.changhong.sei.core.dto.ResultData;
+import com.changhong.sei.core.dto.auth.AuthEntityData;
 import com.changhong.sei.core.dto.serach.PageResult;
 import com.changhong.sei.core.dto.serach.Search;
 import com.changhong.sei.core.service.BaseEntityService;
@@ -46,5 +47,25 @@ public class AuthdataController extends BaseEntityController<Authdata, AuthdataD
 
     public ResultData<List<Authdata>> findByCode(String code) {
         return ResultData.success(service.findByCode(code));
+    }
+
+    @Override
+    public ResultData<List<AuthEntityData>> getAuthEntityDataByIds(List<String> ids) {
+        return ResultData.success((service.getAuthEntityDataByIds(ids)));
+    }
+
+    @Override
+    public ResultData<List<AuthEntityData>> findAllAuthEntityData() {
+        return ResultData.success(service.findAllAuthEntityData());
+    }
+
+    @Override
+    public ResultData<List<AuthdataDto>> getUserAuthorizedEntities(String featureCode) {
+        return ResultData.success(convertToDtos(service.getUserAuthorizedEntities(featureCode)));
+    }
+
+    @Override
+    public ResultData<List<AuthdataDto>> getUserAuthEntitiesIncludeFrozen(String featureCode) {
+        return ResultData.success(convertToDtos(service.getUserAuthorizedEntities(featureCode, Boolean.TRUE)));
     }
 }

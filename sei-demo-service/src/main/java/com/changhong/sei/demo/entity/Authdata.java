@@ -2,7 +2,9 @@ package com.changhong.sei.demo.entity;
 
 import com.changhong.sei.core.dto.annotation.DataHistory;
 import com.changhong.sei.core.dto.annotation.EnableDataHistory;
+import com.changhong.sei.core.dto.auth.IDataAuthEntity;
 import com.changhong.sei.core.entity.BaseAuditableEntity;
+import com.changhong.sei.core.entity.IFrozen;
 import com.changhong.sei.core.entity.ITenant;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -23,7 +25,7 @@ import java.io.Serializable;
 @DynamicInsert
 @DynamicUpdate
 @EnableDataHistory(name = "演示数据")
-public class Authdata extends BaseAuditableEntity implements Serializable, ITenant {
+public class Authdata extends BaseAuditableEntity implements Serializable, ITenant, IFrozen, IDataAuthEntity {
     private static final long serialVersionUID = -26707892180019370L;
     /**
      * 代码
@@ -36,6 +38,12 @@ public class Authdata extends BaseAuditableEntity implements Serializable, ITena
     @Column(name = "name")
     @DataHistory(name = "名称")
     private String name;
+    /**
+     * 名称
+     */
+    @Column(name = "forzen")
+    private Boolean forzen;
+
     /**
      * 租户代码
      */
@@ -67,4 +75,13 @@ public class Authdata extends BaseAuditableEntity implements Serializable, ITena
         this.tenantCode = tenantCode;
     }
 
+    @Override
+    public Boolean getFrozen() {
+        return getFrozen();
+    }
+
+    @Override
+    public void setFrozen(Boolean frozen) {
+        this.forzen = frozen;
+    }
 }

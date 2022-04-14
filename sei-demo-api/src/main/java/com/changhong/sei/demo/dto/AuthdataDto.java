@@ -4,6 +4,8 @@ import com.changhong.sei.core.dto.BaseEntityDto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * 权限数据(Authdata)DTO类
  *
@@ -30,6 +32,14 @@ public class AuthdataDto extends BaseEntityDto {
     private String tenantCode;
 
 
+    /**
+     * 冻结标志
+     */
+    @NotNull
+    @ApiModelProperty(value = "冻结标志", required = true)
+    private Boolean frozen = Boolean.FALSE;
+
+
     public String getCode() {
         return code;
     }
@@ -54,4 +64,11 @@ public class AuthdataDto extends BaseEntityDto {
         this.tenantCode = tenantCode;
     }
 
+    public Boolean getFrozen() {
+        return frozen;
+    }
+
+    public void setFrozen(Boolean frozen) {
+        this.frozen = frozen;
+    }
 }
