@@ -19,7 +19,7 @@ import javax.persistence.MappedSuperclass;
 public class BaseFlowEntity extends BaseAuditableEntity {
 
     @Column(length = 36, name = "flow_status")
-    private FlowStatus flowStatus;
+    private FlowStatus flowStatus = FlowStatus.INIT;
 
     @Column(name = "organization_code")
     private String organizationCode;
