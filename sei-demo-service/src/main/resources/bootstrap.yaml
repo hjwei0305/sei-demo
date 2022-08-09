@@ -12,9 +12,9 @@ sei: # 应用全局配置
     user:
       tenant-code: DONLIM
       account: 20282134
-  http:
-    filter:
-      enable: false
+#  http:
+#    filter:
+#     enable: false
 
 spring:
   application:
