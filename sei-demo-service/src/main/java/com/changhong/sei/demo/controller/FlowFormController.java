@@ -11,9 +11,11 @@ import com.changhong.sei.demo.entity.FlowForm;
 import com.changhong.sei.demo.flow.BaseFlowController;
 import com.changhong.sei.demo.flow.BaseFlowEntityService;
 import com.changhong.sei.demo.service.FlowFormService;
+import com.changhong.sei.edm.sdk.DocumentManager;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,9 +38,21 @@ public class FlowFormController extends BaseFlowController<FlowForm, FlowFormDto
     @Autowired
     private FlowFormService service;
 
+    @Autowired
+    private DocumentManager documentManager;
+
     @Override
     public BaseFlowEntityService<FlowForm> getService() {
         return service;
+    }
+
+    @Override
+    public ResultData<FlowFormDto> save(FlowFormDto dto) {
+        ResultData<FlowFormDto> result = super.save(dto);
+        if(result.getSuccess() && !CollectionUtils.isEmpty( dto.getAttachmentIdList())){
+            documentManager.bindBusinessDocuments(result.getData().getId(), dto.getAttachmentIdList());
+        }
+        return result;
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.changhong.sei.core.dto.BaseEntityDto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.List;
+
 /**
  * 流程表单(FlowForm)DTO类
  *
@@ -53,6 +55,9 @@ public class FlowFormDto extends BaseEntityDto {
      */
     @ApiModelProperty(value = "租户代码")
     private String tenantCode;
+
+    @ApiModelProperty(value = "附件id列表")
+    private List<String> attachmentIdList;
 
 
     public String getCode() {
@@ -119,4 +124,11 @@ public class FlowFormDto extends BaseEntityDto {
         this.tenantCode = tenantCode;
     }
 
+    public List<String> getAttachmentIdList() {
+        return attachmentIdList;
+    }
+
+    public void setAttachmentIdList(List<String> attachmentIdList) {
+        this.attachmentIdList = attachmentIdList;
+    }
 }
